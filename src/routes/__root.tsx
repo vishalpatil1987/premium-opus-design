@@ -9,6 +9,9 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { Navbar } from "@/components/site/Navbar";
+import { Footer } from "@/components/site/Footer";
+import { ScrollProgress } from "@/components/site/ScrollProgress";
 
 function NotFoundComponent() {
   return (
@@ -72,11 +75,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Atelier Nove — Architecture, Interiors & Construction" },
+      { name: "description", content: "A luxury architecture, interiors and construction studio designing timeless residences, hospitality and workspaces across Europe." },
+      { name: "author", content: "Atelier Nove" },
+      { property: "og:title", content: "Atelier Nove — Designing Spaces That Define Luxury" },
+      { property: "og:description", content: "Architecture, interiors and construction crafted with timeless elegance." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
@@ -86,6 +89,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" },
     ],
   }),
   shellComponent: RootShell,
@@ -113,7 +119,12 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <ScrollProgress />
+      <Navbar />
+      <main>
+        <Outlet />
+      </main>
+      <Footer />
     </QueryClientProvider>
   );
 }
